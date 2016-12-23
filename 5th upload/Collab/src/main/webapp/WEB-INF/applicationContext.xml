@@ -1,0 +1,74 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:mvc="http://www.springframework.org/schema/mvc"
+   xmlns:security="http://www.springframework.org/schema/security"
+   xmlns:tx="http://www.springframework.org/schema/tx"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="
+   http://www.springframework.org/schema/beans     
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context 
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+    http://www.springframework.org/schema/security 
+    http://www.springframework.org/schema/security/spring-security.xsd
+    http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+    http://www.springframework.org/schema/tx
+   http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+  
+   <context:component-scan base-package="com.portal.*" />
+ 
+   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521/XE"/>
+        <property name="username" value="blog" />
+        <property name="password" value="1994"/>
+         
+    </bean>
+     
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean" >
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.portal</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>       
+    </bean>
+    <bean id="multipartResolver"
+    class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- max file size in bytes -->
+    <property name="maxUploadSize" value="2000000" />
+    <!-- other properties... -->
+	</bean>
+ <tx:annotation-driven/>
+    <bean id="transactionManager"  class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+    <security:http auto-config="true">
+        <security:intercept-url pattern="/admin/**" access="permitAll" />
+        <!-- <security:intercept-url pattern="/logout" access="permitAll" />
+        <security:intercept-url pattern="/accessdenied" access="permitAll" /> -->
+        <security:intercept-url pattern="/Collab/**" access="hasRole({'ROLE_USER','ROLE_ADMIN'})"/>
+        <security:form-login login-page="/signin" default-target-url="/" authentication-failure-url="/signin?error"  username-parameter="username"  password-parameter="password" /> 
+       <!-- security:intercept-url pattern="/ElectronicsOnline/**" access="hasRole({'ROLE_ADMIN'})" />
+        <security:form-login login-page="/index" default-target-url="/welcome2" authentication-failure-url="/login?error"  username-parameter="username"  password-parameter="password" /> -->
+        <security:logout logout-success-url="/signin?logout" />
+		<security:csrf disabled="true"/> 
+    </security:http>
+  
+    <security:authentication-manager>
+        <security:authentication-provider>
+           <security:jdbc-user-service data-source-ref="dataSource"
+           authorities-by-username-query="SELECT u.uname, r.role_uname from registermodule u,registerrole r WHERE u.userid=r.roleid and u.uname =?" 
+    users-by-username-query="SELECT uname,pwrd,enable from registermodule WHERE uname=?"/>
+               </security:authentication-provider>
+         </security:authentication-manager>
+</beans>
