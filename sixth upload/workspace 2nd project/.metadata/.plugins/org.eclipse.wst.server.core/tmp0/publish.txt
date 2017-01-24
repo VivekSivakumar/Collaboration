@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Tue Jan 24 15:03:26 IST 2017
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\vpnsivakumar\\.m2\\repository\\org\\apache\\tomcat\\embed\\tomcat-embed-websocket\\9.0.0.M13\\tomcat-embed-websocket-9.0.0.M13.jar=WEB-INF/lib/tomcat-embed-websocket-9.0.0.M13.jar
+org.eclipse.jst.j2ee.server\:/binary\:C\:\\Users\\vpnsivakumar\\.m2\\repository\\org\\springframework\\spring-web\\4.3.4.RELEASE\\spring-web-4.3.4.RELEASE.jar=WEB-INF/lib/spring-web-4.3.4.RELEASE.jar

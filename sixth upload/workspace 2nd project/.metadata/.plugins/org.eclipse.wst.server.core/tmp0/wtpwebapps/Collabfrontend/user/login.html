@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css'/>" rel="stylesheet"/>
+<link href="css/indexstyle.css'/>" rel="stylesheet"/>
+<link href="css/indexnav.css'/>" rel="stylesheet"/>
+
+</head>
+<style>
+body{
+	padding:7em;
+	background: url(images/3.jpg)no-repeat; 
+	background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 750px; 
+}
+
+h1,h2,h3,h4,h5,h6{
+	margin:0;			   
+}	
+p{
+	margin:0;
+}
+ul{
+	margin:0;
+	padding:0;
+}
+label{
+	margin:0;
+}
+a{ 
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+	-ms-transition: 0.5s all;
+	transition: 0.5s all;
+	outline: none;
+	text-decoration:none;
+}
+a:hover{
+	transition: 0.5s all;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	-o-transition: 0.5s all;
+} 
+/*-- widget start here --*/
+.login {
+    margin-top: 3em;
+}
+.login h2 {
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.login h3 {
+    font-size: 1em;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 0.5em;
+    font-weight: 100;
+}
+.login h3 a {
+    color: #ecba65;
+	margin-left: 6px;
+}
+.login h3 a:hover{
+    color: #fff;
+}
+.login-main {
+    width: 30%;
+    margin: 0 auto;
+    border: 1px solid #fff;
+    padding: 3em;
+    background: rgba(0, 0, 0, 0.45);
+}
+.login h1, h5.w3ls-title {
+    text-align: center;
+    font-size:1.7em;
+    color: #d6921e;
+    margin-bottom: 1em;
+	font-weight:100;
+} 
+.login input[type="text"],.login input[type="password"] {
+    display: block;
+    background: none;
+	border: none;
+    border-bottom: 1px solid #ffffff;
+    width: 100%;  
+    outline: none;
+    font-size: 0.95em;
+    color: #ffffff;
+    font-weight: 400;
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+    border-radius: 3px;
+    padding: 10px 0px;
+    text-align: center;
+    margin: 0 0 2em 0em;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.login input[type="text"]:focus ,.login input[type="password"]:focus{
+    border-color: #d6921e;
+} 
+.login input[type="submit"] {
+    font-size: 1em;
+    color: #FFFFFF;
+    padding: 0.6em 1em 0.6em 1em;
+    display: block;
+    border: none;
+    margin: 3em auto 0em;
+    outline: none;
+    background:#d6921e;
+	border: 1px solid #d6921e;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    width: 30%;
+    cursor: pointer;
+    font-family: 'Roboto Condensed', sans-serif;
+	transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.login input[type="submit"]:hover {
+    background: transparent; 
+    color: #d6921e;
+}
+.login p {
+    font-size: 1em;
+    color: #fff;
+}
+::-webkit-input-placeholder{
+   color:#d4d2d2 !important;
+} 
+.copy-rights {
+    text-align: center;
+    padding: 3em 0;
+}
+.copy-rights p {
+    font-size: 1em;
+    color: #fff;
+    text-align: center;
+    line-height: 1.7em;
+}
+.copy-rights p a{
+  color:#FFC562; 
+} 
+.copy-rights p a:hover{
+  color: #fff; 
+} 
+.login-modal.login {
+    width: 50%;
+    margin: 5em auto 0;
+}
+</style>
+<body>
+<div class="login agile">
+		<div class="w3agile-border">
+			
+			<div class="login-main login-agileits"> 
+				<h1>Login</h1> 
+				<form>
+					<p>Username</p>
+					<input type="text" ng-model="user.uname" placeholder="username" name="username" required="">
+					<p>Password</p>
+					<input type="password" ng-model="user.pwrd" placeholder="Password" name="password" required="">
+					<input type="submit" ng-click="submit()" value="Login">
+				</form>
+				
+				<h3>Not a member yet ? <a href="#/signup" class="sign-in popup-top-anim"> Sign Up Now !</a></h3>
+			</div>
+		</div> 
+	</div>
+	<!--slide-end-->
+	<!--footer-starts-->
+	<div class="footer">
+		<div class="container">
+			<div class="footer-text">
+				<p>© 2016 Collab. All Rights Reserved | Design by  <a href="http://www.collab.com/" target="_blank">Collab</a> </p>
+			</div>
+		</div>
+	</div>
+	<!--footer-end-->
+</body>
+</html>
